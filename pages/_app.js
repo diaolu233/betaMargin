@@ -1,4 +1,4 @@
-// import '../styles/globals.css'
+// import '../styles/globals.less'
 
 // function MyApp({ Component, pageProps }) {
 //   return <Component {...pageProps} />
@@ -8,7 +8,7 @@
 
 import { Provider } from "react-redux";
 import widthDva from "../utils/store";
-import "babel-polyfill"
+
 import App, { Container } from "next/app";
 import React from "react";
 import { styled } from '@material-ui/core/styles';
@@ -36,11 +36,11 @@ const theme = createMuiTheme({
   palette: {
     primary: {
       // Purple and green play nicely together.
-      main: purple[500],
+      main: '#7070da',
     },
     secondary: {
       // This is green.A700 as hex.
-      main: '#11cb5f',
+      main: '#333333',
     },
   },
 });
@@ -76,13 +76,13 @@ class MyApp extends App {
     return (
       <Provider store={dvaStore}>
          <ThemeProvider theme={theme}>
-          {/* <Component {...pageProps} /> */}
+        
           <Box
           color="secondary.main"
-          bgcolor="background.paper"
+          bgcolor="#FBFDFF"
           fontFamily="h6.fontFamily"
           fontSize={{ xs: 'h6.fontSize', sm: 'h4.fontSize', md: 'h3.fontSize' }}
-          // p={{ xs: 2, sm: 3, md: 4 }}
+        
          >
           <Component {...pageProps} />
         </Box>

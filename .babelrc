@@ -2,6 +2,7 @@
 {
     "presets": ["next/babel"],
     "plugins": [
+      
       [
         "module-resolver",
         {
@@ -13,9 +14,12 @@
             "@/reducers": "./reducers",
             "@/utils": "./utils",
             "@/services":"./services",
-            "@/imge":"./images"
+            "@/imge":"./images",
+            "@/assets":"./assets"
           }
-        }
+        },
+       "@babel/plugin-transform-runtime"
+       
         
       ],
       [

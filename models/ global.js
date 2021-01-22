@@ -49,19 +49,16 @@ export default {
 
   },
   subscriptions: {
-    // setup({ dispatch }) {
-    //   document.addEventListener('readystatechange', e => {
-    //     if (document.readyState === "complete"){
-    //       dispatch({
-    //         type: 'fetchGeetest',
-    //         params: {
-    //           clientType: 'web',
-    //           geetestType: 'phone_register',
-    //         }
-    //       });
-    //     }
-    //   });
-    // },
+    history({ dispatch }) {
+      listen(({ pathname }) => {
+        console.log(111)
+        if (pathname === '/users') {
+          dispatch({
+            type: 'users/fetch',
+          });
+        }
+      });
+    },
   }
 };
  

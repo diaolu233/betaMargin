@@ -1,0 +1,11 @@
+{
+    "provider":{"network":"http://127.0.0.1:8545"},
+    "contracts":{"wallet":"0xc783df8a850f42e7F7e57013759C285caa701eB6",
+        "usdt":"0xcdF1185e592AFc8d8754C4BC8479C39b20437E42",
+        "weth":"0xAA15a22Fcf42465dC3F9C3238Cd7fB69dba86499",
+        "factory":"0x2A3D01c3eAB4d9133E0A33547706DC3e28f41275",
+        "router":"0x1bb3d8FA7bDa74Af0D64d348a2545E7570863fA8",
+        "bank":"0x821503f2d6990eb6E71fde0CeFf503cE5415b98c",
+        "fund":"0xB7d4f04E8dF26d2FEE35D4AeB2A63fEB49451B78"},
+        "currentAPY":"15"
+}

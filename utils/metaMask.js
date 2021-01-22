@@ -1,3 +1,4 @@
+import Web3 from "web3";
 let web3Provider;
 let account;
 let web3js;
@@ -37,21 +38,48 @@ const metaMasks =  async () =>{
     //  return account
 }
 const connectMeta = async ()=>{
-  // console.log(1)
+  // if (typeof web3 !== 'undefined') {
+  //   App.web3Provider = web3.currentProvider
+  //   web3 = new Web3(App.web3Provider);
+
+  //   /* To see if the injected provider is from MetaMask */
+  //   if(web3.currentProvider.isMetaMask) {
+  //    console.log('The injected provider is from MetaMask！')
+  //       }
+  //   } else {
+  //   console.log('No web3? You should consider trying MetaMask!')
+  //   window.alert('No web3? You should consider trying MetaMask!');
+
+  //       /*
+  //       App.web3Provider = new Web3.providers.HttpProvider("http://localhost:9545")
+  //       web3 = new Web3(App.web3Provider);*/
+  //   }
+
+
+
+
+
   if (window.ethereum) {
+    window.ethereum.autoRefreshOnNetworkChange = false 
+    
     web3Provider = window.ethereum;
-    try {
-        // 请求用户授权
-        await window.ethereum.enable();
-    } catch (error) {
-        // 用户不授权时
-        console.error("User denied account access")
-    }
+    // try {
+    //     // 请求用户授权
+    //     await window.ethereum.enable();
+    // } catch (error) {
+    //     // 用户不授权时
+    //     console.error("User denied account access")
+    // }
     } else if (window.web3) {   // 老版 MetaMask Legacy dapp browsers...
       web3Provider = window.web3.currentProvider;
     } else {
       web3Provider = new Web3.providers.HttpProvider('http://localhost:8545');
+      return false
+      console.log('No web3? You should consider trying MetaMask!')
     }
+    //  else{
+    //   console.log('No web3? You should consider trying MetaMask!')
+    // }
     web3js = new Web3(web3Provider)
  
   return web3js

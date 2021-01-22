@@ -1,0 +1,751 @@
+{
+  "contractName": "IMStableStakingRewards",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "stake",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdraw",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "claimReward",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_reward",
+          "type": "uint256"
+        }
+      ],
+      "name": "notifyRewardAmount",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"balanceOf\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"claimReward\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_reward\",\"type\":\"uint256\"}],\"name\":\"notifyRewardAmount\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"stake\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_amount\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Originally: Synthetix (forked from /Synthetixio/synthetix/contracts/StakingRewards.sol)        Audit: https://github.com/sigp/public-audits/blob/master/synthetix/unipool/review.pdf        Changes by: Stability Labs Pty. Ltd.\",\"details\":\"Uses an ever increasing 'rewardPerTokenStored' variable to distribute rewards each time a write action is called in the contract. This allows for passive reward accrual.        Changes:          - Cosmetic (comments, readability)          - Addition of getRewardToken()          - Changing of `StakingTokenWrapper` funcs from `super.stake` to `_stake`          - Introduced a `stake(_beneficiary)` function to enable contract wrappers to stake on behalf\",\"methods\":{\"balanceOf(address)\":{\"details\":\"Returns the amount of tokens owned by `account`.\"},\"claimReward()\":{\"details\":\"Claims outstanding rewards for the sender. First updates outstanding reward allocation and then transfers.\"},\"notifyRewardAmount(uint256)\":{\"details\":\"Notifies the contract that new rewards have been added. Calculates an updated rewardRate based on the rewards in period.\",\"params\":{\"_reward\":\"Units of RewardToken that have been added to the pool\"}},\"stake(uint256)\":{\"details\":\"Stakes a given amount of the StakingToken for the sender\",\"params\":{\"_amount\":\"Units of StakingToken\"}},\"withdraw(uint256)\":{\"details\":\"Withdraws given stake amount from the pool\",\"params\":{\"_amount\":\"Units of the staked token to withdraw\"}}},\"title\":\"StakingRewards\"},\"userdoc\":{\"methods\":{},\"notice\":\"Rewards stakers of a given LP token (a.k.a StakingToken) with RewardsToken, on a pro-rata basis\"}},\"settings\":{\"compilationTarget\":{\"/C/workspace/Project/projects.spider.miner/alphahomora/contracts/5/mstable/IMStableStakingRewards.sol\":\"IMStableStakingRewards\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":999999},\"remappings\":[]},\"sources\":{\"/C/workspace/Project/projects.spider.miner/alphahomora/contracts/5/mstable/IMStableStakingRewards.sol\":{\"keccak256\":\"0xb8d7ee8b658052c56d336d28b3508b5b83c548a64abf8fdde92e1114788f6904\",\"urls\":[\"bzz-raw://e854c613090c923bcc20b6217eff6359e1377b9f0714a7a96622c265dc53d1cf\",\"dweb:/ipfs/Qmf9UVc6WnTU6eEFoNefb8B1qXAhuUFPC5YUbMgNVeCF47\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.5.16;\n\n/**\n * @title  StakingRewards\n * @author Originally: Synthetix (forked from /Synthetixio/synthetix/contracts/StakingRewards.sol)\n *         Audit: https://github.com/sigp/public-audits/blob/master/synthetix/unipool/review.pdf\n *         Changes by: Stability Labs Pty. Ltd.\n * @notice Rewards stakers of a given LP token (a.k.a StakingToken) with RewardsToken, on a pro-rata basis\n * @dev    Uses an ever increasing 'rewardPerTokenStored' variable to distribute rewards\n * each time a write action is called in the contract. This allows for passive reward accrual.\n *         Changes:\n *           - Cosmetic (comments, readability)\n *           - Addition of getRewardToken()\n *           - Changing of `StakingTokenWrapper` funcs from `super.stake` to `_stake`\n *           - Introduced a `stake(_beneficiary)` function to enable contract wrappers to stake on behalf\n */\ncontract IMStableStakingRewards {\n\n    /**\n     * @dev Returns the amount of tokens owned by `account`.\n     */\n    function balanceOf(address account) external view returns (uint256);\n   \n    /***************************************\n                    ACTIONS\n    ****************************************/    \n\n    /**\n     * @dev Stakes a given amount of the StakingToken for the sender\n     * @param _amount Units of StakingToken\n     */\n    function stake(uint256 _amount) external;\n       \n    /**\n     * @dev Withdraws given stake amount from the pool\n     * @param _amount Units of the staked token to withdraw\n     */\n    function withdraw(uint256 _amount) public;\n\n    /**\n     * @dev Claims outstanding rewards for the sender.\n     * First updates outstanding reward allocation and then transfers.\n     */\n    function claimReward() public;\n        \n\n    /***************************************\n                    ADMIN\n    ****************************************/\n\n    /**\n     * @dev Notifies the contract that new rewards have been added.\n     * Calculates an updated rewardRate based on the rewards in period.\n     * @param _reward Units of RewardToken that have been added to the pool\n     */\n    function notifyRewardAmount(uint256 _reward) external;       \n}",
+  "sourcePath": "C:\\workspace\\Project\\projects.spider.miner\\alphahomora\\contracts\\5\\mstable\\IMStableStakingRewards.sol",
+  "ast": {
+    "absolutePath": "/C/workspace/Project/projects.spider.miner/alphahomora/contracts/5/mstable/IMStableStakingRewards.sol",
+    "exportedSymbols": {
+      "IMStableStakingRewards": [
+        9197
+      ]
+    },
+    "id": 9198,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 9171,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:28"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title  StakingRewards\n@author Originally: Synthetix (forked from /Synthetixio/synthetix/contracts/StakingRewards.sol)\n        Audit: https://github.com/sigp/public-audits/blob/master/synthetix/unipool/review.pdf\n        Changes by: Stability Labs Pty. Ltd.\n@notice Rewards stakers of a given LP token (a.k.a StakingToken) with RewardsToken, on a pro-rata basis\n@dev    Uses an ever increasing 'rewardPerTokenStored' variable to distribute rewards\neach time a write action is called in the contract. This allows for passive reward accrual.\n        Changes:\n          - Cosmetic (comments, readability)\n          - Addition of getRewardToken()\n          - Changing of `StakingTokenWrapper` funcs from `super.stake` to `_stake`\n          - Introduced a `stake(_beneficiary)` function to enable contract wrappers to stake on behalf",
+        "fullyImplemented": false,
+        "id": 9197,
+        "linearizedBaseContracts": [
+          9197
+        ],
+        "name": "IMStableStakingRewards",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@dev Returns the amount of tokens owned by `account`.",
+            "id": 9178,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "balanceOf",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9174,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9173,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9178,
+                  "src": "1033:15:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9172,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1033:7:28",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1032:17:28"
+            },
+            "returnParameters": {
+              "id": 9177,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9176,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9178,
+                  "src": "1073:7:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9175,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1073:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1072:9:28"
+            },
+            "scope": 9197,
+            "src": "1014:68:28",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Stakes a given amount of the StakingToken for the sender\n@param _amount Units of StakingToken",
+            "id": 9183,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "stake",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9181,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9180,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9183,
+                  "src": "1359:15:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9179,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1359:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1358:17:28"
+            },
+            "returnParameters": {
+              "id": 9182,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1384:0:28"
+            },
+            "scope": 9197,
+            "src": "1344:41:28",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Withdraws given stake amount from the pool\n@param _amount Units of the staked token to withdraw",
+            "id": 9188,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9186,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9185,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9188,
+                  "src": "1547:15:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9184,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1547:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1546:17:28"
+            },
+            "returnParameters": {
+              "id": 9187,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1570:0:28"
+            },
+            "scope": 9197,
+            "src": "1529:42:28",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Claims outstanding rewards for the sender.\nFirst updates outstanding reward allocation and then transfers.",
+            "id": 9191,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "claimReward",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9189,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1739:2:28"
+            },
+            "returnParameters": {
+              "id": 9190,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1748:0:28"
+            },
+            "scope": 9197,
+            "src": "1719:30:28",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Notifies the contract that new rewards have been added.\nCalculates an updated rewardRate based on the rewards in period.\n@param _reward Units of RewardToken that have been added to the pool",
+            "id": 9196,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "notifyRewardAmount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9194,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9193,
+                  "name": "_reward",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9196,
+                  "src": "2142:15:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9192,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2142:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2141:17:28"
+            },
+            "returnParameters": {
+              "id": 9195,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2167:0:28"
+            },
+            "scope": 9197,
+            "src": "2114:54:28",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 9198,
+        "src": "898:1279:28"
+      }
+    ],
+    "src": "0:2177:28"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/workspace/Project/projects.spider.miner/alphahomora/contracts/5/mstable/IMStableStakingRewards.sol",
+    "exportedSymbols": {
+      "IMStableStakingRewards": [
+        9197
+      ]
+    },
+    "id": 9198,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 9171,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:28"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": "@title  StakingRewards\n@author Originally: Synthetix (forked from /Synthetixio/synthetix/contracts/StakingRewards.sol)\n        Audit: https://github.com/sigp/public-audits/blob/master/synthetix/unipool/review.pdf\n        Changes by: Stability Labs Pty. Ltd.\n@notice Rewards stakers of a given LP token (a.k.a StakingToken) with RewardsToken, on a pro-rata basis\n@dev    Uses an ever increasing 'rewardPerTokenStored' variable to distribute rewards\neach time a write action is called in the contract. This allows for passive reward accrual.\n        Changes:\n          - Cosmetic (comments, readability)\n          - Addition of getRewardToken()\n          - Changing of `StakingTokenWrapper` funcs from `super.stake` to `_stake`\n          - Introduced a `stake(_beneficiary)` function to enable contract wrappers to stake on behalf",
+        "fullyImplemented": false,
+        "id": 9197,
+        "linearizedBaseContracts": [
+          9197
+        ],
+        "name": "IMStableStakingRewards",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@dev Returns the amount of tokens owned by `account`.",
+            "id": 9178,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "balanceOf",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9174,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9173,
+                  "name": "account",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9178,
+                  "src": "1033:15:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 9172,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1033:7:28",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1032:17:28"
+            },
+            "returnParameters": {
+              "id": 9177,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9176,
+                  "name": "",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9178,
+                  "src": "1073:7:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9175,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1073:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1072:9:28"
+            },
+            "scope": 9197,
+            "src": "1014:68:28",
+            "stateMutability": "view",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Stakes a given amount of the StakingToken for the sender\n@param _amount Units of StakingToken",
+            "id": 9183,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "stake",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9181,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9180,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9183,
+                  "src": "1359:15:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9179,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1359:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1358:17:28"
+            },
+            "returnParameters": {
+              "id": 9182,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1384:0:28"
+            },
+            "scope": 9197,
+            "src": "1344:41:28",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Withdraws given stake amount from the pool\n@param _amount Units of the staked token to withdraw",
+            "id": 9188,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "withdraw",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9186,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9185,
+                  "name": "_amount",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9188,
+                  "src": "1547:15:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9184,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1547:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1546:17:28"
+            },
+            "returnParameters": {
+              "id": 9187,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1570:0:28"
+            },
+            "scope": 9197,
+            "src": "1529:42:28",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Claims outstanding rewards for the sender.\nFirst updates outstanding reward allocation and then transfers.",
+            "id": 9191,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "claimReward",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9189,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1739:2:28"
+            },
+            "returnParameters": {
+              "id": 9190,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1748:0:28"
+            },
+            "scope": 9197,
+            "src": "1719:30:28",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          },
+          {
+            "body": null,
+            "documentation": "@dev Notifies the contract that new rewards have been added.\nCalculates an updated rewardRate based on the rewards in period.\n@param _reward Units of RewardToken that have been added to the pool",
+            "id": 9196,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "notifyRewardAmount",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 9194,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 9193,
+                  "name": "_reward",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 9196,
+                  "src": "2142:15:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 9192,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "2142:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "2141:17:28"
+            },
+            "returnParameters": {
+              "id": 9195,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "2167:0:28"
+            },
+            "scope": 9197,
+            "src": "2114:54:28",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 9198,
+        "src": "898:1279:28"
+      }
+    ],
+    "src": "0:2177:28"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.2",
+  "updatedAt": "2021-01-13T08:42:44.315Z",
+  "devdoc": {
+    "author": "Originally: Synthetix (forked from /Synthetixio/synthetix/contracts/StakingRewards.sol)        Audit: https://github.com/sigp/public-audits/blob/master/synthetix/unipool/review.pdf        Changes by: Stability Labs Pty. Ltd.",
+    "details": "Uses an ever increasing 'rewardPerTokenStored' variable to distribute rewards each time a write action is called in the contract. This allows for passive reward accrual.        Changes:          - Cosmetic (comments, readability)          - Addition of getRewardToken()          - Changing of `StakingTokenWrapper` funcs from `super.stake` to `_stake`          - Introduced a `stake(_beneficiary)` function to enable contract wrappers to stake on behalf",
+    "methods": {
+      "balanceOf(address)": {
+        "details": "Returns the amount of tokens owned by `account`."
+      },
+      "claimReward()": {
+        "details": "Claims outstanding rewards for the sender. First updates outstanding reward allocation and then transfers."
+      },
+      "notifyRewardAmount(uint256)": {
+        "details": "Notifies the contract that new rewards have been added. Calculates an updated rewardRate based on the rewards in period.",
+        "params": {
+          "_reward": "Units of RewardToken that have been added to the pool"
+        }
+      },
+      "stake(uint256)": {
+        "details": "Stakes a given amount of the StakingToken for the sender",
+        "params": {
+          "_amount": "Units of StakingToken"
+        }
+      },
+      "withdraw(uint256)": {
+        "details": "Withdraws given stake amount from the pool",
+        "params": {
+          "_amount": "Units of the staked token to withdraw"
+        }
+      }
+    },
+    "title": "StakingRewards"
+  },
+  "userdoc": {
+    "methods": {},
+    "notice": "Rewards stakers of a given LP token (a.k.a StakingToken) with RewardsToken, on a pro-rata basis"
+  }
+}

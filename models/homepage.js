@@ -6,11 +6,15 @@ const model = {
     pathname: '/rrrr',
     locale:"",
     isMobile:"true",
-    account:""
+    account:"",
+    isPc:true,
+    isMainnet:0,
+    beta:'0.00'
   },
   reducers: {
     updateState(state, { payload }) {
-      console.log(1)
+      
+      // console.log(1)
       return {
         ...state,
         ...payload,

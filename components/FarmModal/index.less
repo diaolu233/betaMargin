@@ -1,0 +1,318 @@
+.farmModal{
+    width: 5.60rem;
+    // height: 10.00rem;
+    margin-top: 10rem;
+	background-color: #fbfdff;
+	box-shadow: 0px 6px 20px 0px 
+		#deeaf4;
+	border-radius: 0.20rem;
+    border: solid 2px #ffffff;
+    padding: 0.57rem 0.75rem;
+    position: relative;
+    margin-bottom: 2rem;
+    // overflow: scroll;
+    // .backdrop{
+    //     position: absolute;
+    //     top: 50%;
+    //     left: 50%;
+    //     // background-color: #333333;
+    //     z-index: 999;
+    //     // size:100;
+    // }
+    // position: fixed;
+    // left: 0;
+    // top:0;
+    // right:0;
+    // bottom:0;
+    // z-index: 100;  
+    // background: rgba(0, 0, 0, 0.8);
+
+    .cancel{
+        // display: flex;
+        // justify-content: flex-end;
+        position: absolute;
+        top: -0.29rem;
+        right: 0.29rem;
+        cursor: pointer;
+    }
+    .title{
+        font-size: 0.18rem;
+        color: #333333;
+    }
+    .rows{
+        font-size: 0.16rem;
+        color: #888888;
+        margin-bottom: 0.28rem;
+        margin-top: 0.50rem;
+        display: flex;
+        justify-content: space-between;
+        div{
+            color: #333333;
+            display: flex;
+            align-items: center;
+        }
+        img{
+            width: 0.14rem;
+            // height: 0.14rem;
+            cursor: pointer;
+            margin-left: 0.1rem;
+        }
+        
+        .right{
+            color: #888888;
+        }
+        .active{
+            color: #ff3b3b;
+        }
+    }
+    .divider{
+        // width: 549px;
+        // height: 1px;
+        border: solid 1px #cccccc;
+        margin-top: 0.40rem;
+    }
+    .supply{
+        font-size: 0.18rem;
+        color: #333333;
+    }
+    .supplyInput{
+        position: relative;
+        display: flex;
+        
+        span{
+            font-size: 0.18rem;
+            position: absolute;
+            right: 0.10rem;
+            top: 50%;
+        }
+        img{
+            position: absolute;
+            left:0.15rem;
+            top: 45%;
+            z-index: 100;
+        }
+    }
+    .percent{
+        width: 100%;
+        height: 0.56rem;
+        margin-top: 0.16rem;
+        display: flex;
+        justify-content: space-between;
+        
+        li{
+            width: 0.96rem;
+            height: 0.45rem;
+            background-color: #fbfdff;
+            box-shadow: 0px 6px 35px 0px 
+                #deeaf4;
+            border-radius: 0.06rem;
+            border: solid 2px #ffffff;
+            font-size: 0.16rem;
+            color: #333333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            &:hover{
+                box-shadow: 0px 6px 35px 0px 
+                #deeaf4;
+                 border: solid 2px #7070da;
+                 color: #7070da;
+            }
+            &.active{
+                box-shadow: 0px 6px 35px 0px 
+               #deeaf4;
+                border: solid 2px #7070da;
+                color: #7070da;
+            }
+        }
+    }
+    .leverage{
+        color: #888888;
+        font-size: 0.16rem;
+        width: 100%;
+        img{
+            width: 0.14rem;
+            height: 0.14rem;
+            cursor: pointer;
+            margin-left: 0.1rem;
+        }
+    }
+    .leveragecon{
+        width: 100%;
+        .leverageinner{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 0.25rem;
+            font-size: 0.16rem;
+            color: #333333;
+            .circle{
+                width: 0.53rem;
+                height: 0.53rem;
+                background-color: #fbfdff;
+               
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #fbfdff;
+                box-shadow: 0px 6px 35px 0px 
+                    #deeaf4;
+                border: solid 2px #ffffff;
+                cursor: pointer;
+                &:hover{
+                    box-shadow: 0px 6px 35px 0px 
+                    #deeaf4;
+                    border: solid 2px #7070da;
+                }
+            }
+            .active{
+                box-shadow: 0px 6px 35px 0px 
+                #deeaf4;
+                border: solid 2px #7070da;
+            }
+            .line{
+                width: 0.78rem;
+                // height: 0.01rem;
+	            border: solid 0.01rem #cccccc;
+            }
+        }
+    }
+    .summary{
+            font-size: 0.16rem;
+            margin-top: 0.37rem;
+            img{
+                width: 0.14rem;
+                // height: 0.14rem;
+                cursor: pointer;
+                margin-left: 0.1rem;
+            }
+            .sum1{
+                margin-top: 0.27rem;
+                display: flex;
+                justify-content: space-between;
+                >span:nth-child(1){
+                    color: #888888;
+                }
+            }
+            .sum2{
+                margin-top: 0.27rem;
+                display: flex;
+                justify-content: space-between;
+                >span:nth-child(1){
+                    color: #888888;
+                }
+            }
+        
+    }
+    .supplybtncon{
+        display: flex;
+        justify-content: center;
+
+        .supplybtn{
+            width: 4.05rem;
+            height: 0.53rem;
+            background-color: #7070da;
+            box-shadow: 0px 6px 35px 0px 
+                rgba(101, 77, 222, 0.4);
+            border-radius: 0.27rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #ffffff;
+            margin-top: 0.36rem;
+            font-size: 0.18rem;
+            cursor: pointer;
+            &:hover{
+                background-color: #A1A1FF;
+            }
+        }
+    }
+}
+.MuiInput-root{
+    width: 4.50rem;
+    height: 0.62rem;
+    font-size: 0.14rem;
+}
+.MuiInputBase-root{
+    font-size: 0.18rem!important;
+    font-weight: normal!important;
+}
+// .MuiInputBase-root
+.MuiInputBase-input {
+    font-size: 14px!important;
+    font-weight: normal;
+}
+// .MuiInput-underline:hover:not(.Mui-disabled):before{
+//     border-bottom: 0px!important;
+//     content:""!important;
+// }
+// .MuiInput-underline:after{
+//     border-bottom:0px;
+// }
+// .MuiInput-underline:before{
+//     content:""!important;
+//     border-bottom:0px!important;
+// }
+.MuiFormControl-root{
+    width: 100%;
+}
+
+.MuiOutlinedInput-root{
+    width: 100%;
+    // height: 62px;
+    
+    background-color: #fbfdff;
+    box-shadow: 0px 6px 35px 0px 
+        #deeaf4;
+    border-radius: 6px;
+    border: solid 2px #ffffff;
+    margin-top: 0.16rem;
+    margin-right: 0;
+    // margin-left: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.16rem;
+    padding: 0 0.20rem;
+}
+.MuiInputBase-root{
+    width: 100%;
+    height: 0.62rem;
+    
+    background-color: #fbfdff;
+    box-shadow: 0px 6px 35px 0px 
+        #deeaf4;
+    border-radius: 0.06rem;
+    border: solid 2px #ffffff;
+    margin-top: 0.16rem;
+    margin-right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.16rem;
+    padding: 0 0.40rem;
+}
+.MuiFormControl-marginNormal{
+margin-top: 0px;
+margin-bottom: 0px;
+}
+.MuiTooltip-tooltip{
+font-size: 0.16rem!important;
+}
+
+// .MuiBackdrop-root{
+
+// }
+// .backdrop{
+//     display: flex!important;
+
+// }
+
+// .MuiBackdrop-root {
+//     position: flex;
+//     flex-direction: column;
+//     background-color: #333333;
+// }

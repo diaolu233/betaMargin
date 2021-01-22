@@ -1,0 +1,102 @@
+.globalStasCon{
+    width: 5.50rem;
+	height: 5.20rem;
+	background-color: #fbfdff;
+	box-shadow: 0px 6px 35px 0px 
+		#deeaf4;
+	border-radius: 0.08rem;
+    border: solid 2px #ffffff;
+    box-sizing: border-box;
+    margin-bottom: 0.2rem;
+    // display: flex;
+    // justify-content: center;
+    // align-items: ;
+    .title{
+        margin-top: 0.39rem;
+        margin-left: 0.42rem;
+        font-size: 0.18rem;
+        color: #333333;
+    }
+    .circle{
+        width: 2.03rem;
+        height: 2.03rem;
+        border-style: solid;
+        border-width: 0.02rem;
+        border-image-source: linear-gradient(180deg, 
+            #fff 0%, 
+            #fff 100%);
+        // border-image-slice: 1;
+
+        // width:242rpx;
+        // height:242rpx;
+        background-image: linear-gradient(#bc6ff1, #7070da) ;
+        border-radius:50%;
+        text-align:center;
+        margin-top: 0.36rem;
+        margin-left: 1.74rem;
+        // padding:20px;
+        // font-size:28rpx;
+        // box-sizing:border-box;
+        .inner{
+            width:100%;
+            height:100%;
+            background:#fff;
+            border-radius:50%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .text{
+                font-size: 0.16rem;
+                color: #888888;
+                img{
+                    width: 0.14rem;
+                    margin-left: 0.1rem;
+                }
+            }
+            .percent{
+                font-size: 0.32rem;
+                color: #333333;
+            }
+        }
+        
+    }
+    .bottomInfo{
+        display: flex;
+        justify-content: space-between;
+        padding: 0 0.42rem;
+        margin-top: 0.45rem;
+        font-size: 0.16rem;
+        >ul:nth-child(1){
+            color: #888888;
+            font-size: 0.16rem;
+            li{
+                margin-bottom: 0.20rem;
+                display: flex;
+                align-items: center;
+                .smallcir1{
+                    display: flex;
+                    width: 0.10rem;
+                    height: 0.10rem;
+                    border: solid 0.02rem #888888;
+                    border-radius: 50%;
+                }
+                .smallcir2{
+                    display: flex;
+                    width: 0.10rem;
+                    height: 0.10rem;
+                    border: solid 0.02rem #7070da;
+                    border-radius: 50%;
+                }
+            }
+        }
+        >ul:nth-child(2){
+            color: #333333;
+            font-size: 0.16rem;
+            li{
+                margin-bottom: 0.20rem;
+                text-align: right;
+            }
+        }
+    }
+}

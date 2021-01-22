@@ -1,0 +1,353 @@
+{
+  "contractName": "Strategy",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "user",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "debt",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "execute",
+      "outputs": [],
+      "payable": true,
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.16+commit.9c3226ce\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"internalType\":\"address\",\"name\":\"user\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"debt\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"execute\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{\"execute(address,uint256,bytes)\":{\"details\":\"Execute worker strategy. Take LP tokens + ETH. Return LP tokens + ETH.\",\"params\":{\"data\":\"Extra calldata information passed along to this strategy.\",\"debt\":\"The user's total debt, for better decision making context.\",\"user\":\"The original user that is interacting with the operator.\"}}}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/workspace/Project/projects.spider.miner/alphahomora/contracts/5/Strategy.sol\":\"Strategy\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"optimizer\":{\"enabled\":true,\"runs\":999999},\"remappings\":[]},\"sources\":{\"/C/workspace/Project/projects.spider.miner/alphahomora/contracts/5/Strategy.sol\":{\"keccak256\":\"0x6ab194d33b1fc6d71f6e4baab3510463d5da6eec8a8e03b0a90f3f1b60626ce0\",\"urls\":[\"bzz-raw://f8d4b288b579670cf93773129814c5d8ce0b8de24d972f6722692725236e3bd3\",\"dweb:/ipfs/Qmamx4AwXZLmtf5uoMivyawrYXzMQMk1cL6QuJ5bA1RoXC\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "pragma solidity 0.5.16;\n\ninterface Strategy {\n    /// @dev Execute worker strategy. Take LP tokens + ETH. Return LP tokens + ETH.\n    /// @param user The original user that is interacting with the operator.\n    /// @param debt The user's total debt, for better decision making context.\n    /// @param data Extra calldata information passed along to this strategy.\n    function execute(address user, uint256 debt, bytes calldata data) external payable;\n}\n",
+  "sourcePath": "C:\\workspace\\Project\\projects.spider.miner\\alphahomora\\contracts\\5\\Strategy.sol",
+  "ast": {
+    "absolutePath": "/C/workspace/Project/projects.spider.miner/alphahomora/contracts/5/Strategy.sol",
+    "exportedSymbols": {
+      "Strategy": [
+        4631
+      ]
+    },
+    "id": 4632,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4621,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:12"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 4631,
+        "linearizedBaseContracts": [
+          4631
+        ],
+        "name": "Strategy",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@dev Execute worker strategy. Take LP tokens + ETH. Return LP tokens + ETH.\n @param user The original user that is interacting with the operator.\n @param debt The user's total debt, for better decision making context.\n @param data Extra calldata information passed along to this strategy.",
+            "id": 4630,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "execute",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4628,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4623,
+                  "name": "user",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4630,
+                  "src": "385:12:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4622,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "385:7:12",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4625,
+                  "name": "debt",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4630,
+                  "src": "399:12:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4624,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "399:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4627,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4630,
+                  "src": "413:19:12",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 4626,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "413:5:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "384:49:12"
+            },
+            "returnParameters": {
+              "id": 4629,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "450:0:12"
+            },
+            "scope": 4631,
+            "src": "368:83:12",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 4632,
+        "src": "25:428:12"
+      }
+    ],
+    "src": "0:454:12"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/workspace/Project/projects.spider.miner/alphahomora/contracts/5/Strategy.sol",
+    "exportedSymbols": {
+      "Strategy": [
+        4631
+      ]
+    },
+    "id": 4632,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 4621,
+        "literals": [
+          "solidity",
+          "0.5",
+          ".16"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:12"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": null,
+        "fullyImplemented": false,
+        "id": 4631,
+        "linearizedBaseContracts": [
+          4631
+        ],
+        "name": "Strategy",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": null,
+            "documentation": "@dev Execute worker strategy. Take LP tokens + ETH. Return LP tokens + ETH.\n @param user The original user that is interacting with the operator.\n @param debt The user's total debt, for better decision making context.\n @param data Extra calldata information passed along to this strategy.",
+            "id": 4630,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "execute",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 4628,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 4623,
+                  "name": "user",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4630,
+                  "src": "385:12:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 4622,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "385:7:12",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4625,
+                  "name": "debt",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4630,
+                  "src": "399:12:12",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 4624,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "399:7:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 4627,
+                  "name": "data",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 4630,
+                  "src": "413:19:12",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bytes_calldata_ptr",
+                    "typeString": "bytes"
+                  },
+                  "typeName": {
+                    "id": 4626,
+                    "name": "bytes",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "413:5:12",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bytes_storage_ptr",
+                      "typeString": "bytes"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "384:49:12"
+            },
+            "returnParameters": {
+              "id": 4629,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "450:0:12"
+            },
+            "scope": 4631,
+            "src": "368:83:12",
+            "stateMutability": "payable",
+            "superFunction": null,
+            "visibility": "external"
+          }
+        ],
+        "scope": 4632,
+        "src": "25:428:12"
+      }
+    ],
+    "src": "0:454:12"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.16+commit.9c3226ce.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.3.2",
+  "updatedAt": "2021-01-13T08:42:44.285Z",
+  "devdoc": {
+    "methods": {
+      "execute(address,uint256,bytes)": {
+        "details": "Execute worker strategy. Take LP tokens + ETH. Return LP tokens + ETH.",
+        "params": {
+          "data": "Extra calldata information passed along to this strategy.",
+          "debt": "The user's total debt, for better decision making context.",
+          "user": "The original user that is interacting with the operator."
+        }
+      }
+    }
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
