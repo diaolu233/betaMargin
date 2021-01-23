@@ -1,0 +1,13 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = false
+	logallrefupdates = true
+	ignorecase = true
+	precomposeunicode = true
+[remote "origin"]
+	url = git@hlwjd.com:19006:dl/betaMargin.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "dl"]
+	url = http://hlwjd.com:19006/dl/betaMargin.git
+	fetch = +refs/heads/*:refs/remotes/dl/*

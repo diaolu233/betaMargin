@@ -67,7 +67,7 @@ class Farm extends React.Component {
     const  account = accounts[0];
       const { reward } = await tools(isMainnet);
       const beta = await reward.methods
-        .balanceOf("0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266")
+        .balanceOf(account)
         .call();
        
      await this.props.dispatch({
@@ -114,6 +114,7 @@ class Farm extends React.Component {
     if (account) {
       // console.log(1)
       const len = await bank.methods.nextPositionID().call();
+      console.log(len)
       let myPositions = [];
       for (let i = 1; i <= len; i++) {
         const position = await bank.methods.positions(i).call();
@@ -136,9 +137,9 @@ class Farm extends React.Component {
               .toString()
           ),
           position.rewards = "0.00";
-          
+          myPositions.push(position);
         }
-        myPositions.push(position);
+        
        
       }
       
